@@ -1,0 +1,8 @@
+prefix=/home/nitin/EECE5554/LAB0/install
+
+Name: tutorials
+Description: Description of tutorials
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
