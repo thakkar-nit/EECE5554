@@ -20,7 +20,7 @@ def gps_publisher():
         line=serial_data.readline()
         decoded=line.decode('ASCII')
         splitted=decoded.split(',')
-        if '$GPGGA' in splitted: 
+        if '\r$GPGGA' in splitted: 
 ################ Time MANIPULATION #######################            
             time_select=splitted[1]
             time_hour=int(time_select[:2])*3600
@@ -75,7 +75,7 @@ def gps_publisher():
             gps_message.Header.frame_id="GPS1_Frame"
             gps_message.Header.stamp.secs=total_time_sec
             gps_message.Header.stamp.nsecs=time_nano
-            # gps_message.header.seq+
+            # gps_message.Header.seq+
             
             rospy.loginfo(f"Latitude: {Lat_degree}")
             rospy.loginfo(f"Longitude: {Long_degree}")
