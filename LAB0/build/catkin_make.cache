@@ -1,0 +1,2 @@
+tutorials
+-DCATKIN_DEVEL_PREFIX=/home/nitin/EECE5554/LAB0/devel -DCMAKE_INSTALL_PREFIX=/home/nitin/EECE5554/LAB0/install -G Unix Makefiles
