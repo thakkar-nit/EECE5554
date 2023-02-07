@@ -72,9 +72,9 @@ def gps_publisher():
             gps_message.UTC=utc_time
             gps_message.Zone=Zone
             gps_message.Letter=Letter
-            gps_message.header.frame_id="GPS1_Frame"
-            gps_message.header.stamp.secs=total_time_sec
-            gps_message.header.stamp.nsecs=time_nano
+            gps_message.Header.frame_id="GPS1_Frame"
+            gps_message.Header.stamp.secs=total_time_sec
+            gps_message.Header.stamp.nsecs=time_nano
             # gps_message.header.seq+
             
             rospy.loginfo(f"Latitude: {Lat_degree}")
