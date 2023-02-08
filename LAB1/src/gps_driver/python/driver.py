@@ -21,7 +21,7 @@ def gps_publisher():
         decoded=line.decode('ASCII')
         splitted=decoded.split(',')
         rospy.loginfo(splitted)
-        if '\r$GPGGA' in splitted: 
+        if splitted[0].find('GPGGA')!= -1:
 ################ Time MANIPULATION #######################            
             time_select=splitted[1]
             time_hour=int(time_select[:2])*3600
