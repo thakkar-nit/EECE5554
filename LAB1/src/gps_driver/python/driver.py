@@ -73,7 +73,7 @@ def gps_publisher():
             gps_message.UTC=utc_time
             gps_message.Zone=Zone
             gps_message.Letter=Letter
-            gps_message.Header.frame_id.upper="GPS1_Frame"
+            gps_message.Header.frame_id.upper="GPS1_FRAME"
             gps_message.Header.stamp.secs=total_time_sec
             gps_message.Header.stamp.nsecs=time_nano
             # gps_message.Header.seq+
