@@ -11,7 +11,7 @@ import utm
 def gps_publisher():
     port=rospy.get_param('port')
     rospy.loginfo(port)
-    publish=rospy.Publisher('/gps',gps_msg,queue_size=10)
+    publish=rospy.Publisher('gps',gps_msg,queue_size=10)
     rospy.init_node('gps_talker',anonymous=True)
     rate=rospy.Rate(1)
     serial_data=serial.Serial(port,4800)
