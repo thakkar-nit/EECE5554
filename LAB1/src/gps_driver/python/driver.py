@@ -20,7 +20,6 @@ def gps_publisher():
         line=serial_data.readline()
         decoded=line.decode('ASCII')
         splitted=decoded.split(',')
-        rospy.loginfo(splitted)
         if splitted[0].find('GPGGA')!= -1:
 ################ Time MANIPULATION #######################            
             time_select=splitted[1]
