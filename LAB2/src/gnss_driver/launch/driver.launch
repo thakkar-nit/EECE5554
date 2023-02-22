@@ -1,0 +1,6 @@
+<launch>
+  <arg name="port" default="/dev/ttyUSB2"/>
+  <param name="port" value="$(arg port)"/>
+  <node name="gnss_publisher" pkg="gnss_driver" type="driver.py" output="screen">
+  </node>
+</launch>
