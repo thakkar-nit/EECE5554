@@ -127,7 +127,7 @@ include_directories(
 # add_library(${PROJECT_NAME}
 #   src/${PROJECT_NAME}/imu_driver.cpp
 # )
-catkin_install_python(PROGRAMS python/imu_driver.py
+catkin_install_python(PROGRAMS python/driver.py
         DESTINATION   ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 ## Add cmake target dependencies of the library
