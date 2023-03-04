@@ -60,9 +60,9 @@ def imu_driver(serial_data):
             magy=float(splitted[5])
             magz=float(splitted[6])
 
-            imu_message.magnetic_field.x=magx
-            imu_message.magnetic_field.y=magy
-            imu_message.magnetic_field.z=magz
+            imu_message.mag_field.x=magx
+            imu_message.mag_field.y=magy
+            imu_message.mag_field.z=magz
 
             accelx=float(splitted[7])
             accely=float(splitted[8])
