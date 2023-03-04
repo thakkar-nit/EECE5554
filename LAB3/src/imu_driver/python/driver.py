@@ -9,13 +9,19 @@ import numpy as np
 ########################################################
 ## creating gps publisher##
     
+def set_config(data):
+    binary="$VNWRG,75,2,20,15,0009,000C,0014*XX\r\n"
+    data.write(binary.encode())
+    print(data.readline().decode())
 
 def handle_convert_quat(req):
     # time.sleep(5)
-    roll=np.deg2rad(req.roll)
     yaw=np.deg2rad(req.yaw)
     pitch=np.deg2rad(req.pitch)
-    print("values handled")
+    roll=np.deg2rad(req.roll)
+    
+    
+    # print("values handled")
     x = np.sin(roll/2) * np.cos(pitch/2) * np.cos(yaw/2) - np.cos(roll/2) * np.sin(pitch/2) * np.sin(yaw/2)
     y = np.cos(roll/2) * np.sin(pitch/2) * np.cos(yaw/2) + np.sin(roll/2) * np.cos(pitch/2) * np.sin(yaw/2)
     z = np.cos(roll/2) * np.cos(pitch/2) * np.sin(yaw/2) - np.sin(roll/2) * np.sin(pitch/2) * np.cos(yaw/2)
@@ -37,7 +43,7 @@ def imu_driver(serial_data):
         splitted=splitted[0].split(',')
         # decoded=line
         # splitted=decoded.split(',')
-        print(splitted)
+        # print(splitted)
         if len(splitted)>=13 and "VNYMR" not in splitted[1:]:
             
             imu_message=Vectornav()
@@ -51,10 +57,10 @@ def imu_driver(serial_data):
             pitch=float(splitted[2])
             roll=float(splitted[3])
             x,y,z,w=to_quat_client(yaw,pitch,roll)
-            imu_message.orientation.x=x
-            imu_message.orientation.y=y
-            imu_message.orientation.z=z
-            imu_message.orientation.w=w
+            imu_message.imu.x=x
+            imu_message.imu.y=y
+            imu_message.imu.z=z
+            imu_message.imu.w=w
 
             magx=float(splitted[4])
             magy=float(splitted[5])
@@ -92,6 +98,7 @@ def imu_driver(serial_data):
 if __name__=='__main__':
     port=rospy.get_param('port')
     serial_data=serial.Serial(port,115200)
+    set_config(serial_data)
     try:
         imu_driver(serial_data)
         rospy.spin()
