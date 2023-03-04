@@ -51,10 +51,10 @@ def imu_driver(serial_data):
             pitch=float(splitted[2])
             roll=float(splitted[3])
             x,y,z,w=to_quat_client(yaw,pitch,roll)
-            imu_message.orientation.x=x
-            imu_message.orientation.y=y
-            imu_message.orientation.z=z
-            imu_message.orientation.w=w
+            imu_message.imu.x=x
+            imu_message.imu.y=y
+            imu_message.imu.z=z
+            imu_message.imu.w=w
 
             magx=float(splitted[4])
             magy=float(splitted[5])
